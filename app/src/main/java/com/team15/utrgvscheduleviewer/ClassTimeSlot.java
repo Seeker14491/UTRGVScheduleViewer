@@ -18,13 +18,13 @@ public class ClassTimeSlot {
     public int crn;
 
     // FIXME: use more type-safe types
-    public String dayOfWeek;
+    public int dayOfWeek;
     public String startTime;
     public String endTime;
 
     public String location;
 
-    ClassTimeSlot(String subject, int course, int section, int crn, String dayOfWeek, String startTime, String endTime,
+    ClassTimeSlot(String subject, int course, int section, int crn, int dayOfWeek, String startTime, String endTime,
                   String location) {
         this.subject = subject;
         this.course = course;
@@ -84,7 +84,7 @@ public class ClassTimeSlot {
         startTime.set(Calendar.SECOND, 0);
         startTime.set(Calendar.YEAR, now.get(Calendar.YEAR));
         startTime.set(Calendar.MONTH, now.get(Calendar.MONTH));
-        startTime.set(Calendar.DAY_OF_WEEK, Integer.parseInt(this.dayOfWeek)+1);
+        startTime.set(Calendar.DAY_OF_WEEK, this.dayOfWeek + 2);
         Calendar endTime = (Calendar) startTime.clone();
 
         SetTime(this.endTime, endTime);

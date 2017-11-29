@@ -60,15 +60,12 @@ public class AssistScraper {
                 int section = Integer.parseInt(matcher.group(3));
                 int crn = Integer.parseInt(matcher.group(4));
 
-                // FIXME: use proper day of week type, or at least a String of the day's name
-                String dayOfWeek = String.valueOf(dayId);
-
                 String startTime = matcher.group(5);
                 String endTime = matcher.group(6);
                 String location = matcher.group(7);
 
                 classTimeSlots.add(
-                        new ClassTimeSlot(subject, course, section, crn, dayOfWeek, startTime, endTime, location));
+                        new ClassTimeSlot(subject, course, section, crn, dayId, startTime, endTime, location));
             }
         }
 
