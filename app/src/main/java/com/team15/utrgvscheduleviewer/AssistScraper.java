@@ -1,5 +1,10 @@
 package com.team15.utrgvscheduleviewer;
 
+import android.graphics.Color;
+import android.util.Log;
+
+import com.alamkanak.weekview.WeekViewEvent;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,7 +12,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +38,7 @@ public class AssistScraper {
                 .method(Connection.Method.POST)
                 .execute();
 
+        Log.d("AssisScrape",  loginResponse.cookies().toString());
         Document scheduleDocument = Jsoup.connect("https://mywebsis.utrgv.edu/PROD/bwskfshd.P_CrseSchd")
                 .referrer("https://mywebsis.utrgv.edu/PROD/twbkwbis.P_GenMenu?name=bmenu.P_RegMnu")
                 .cookies(loginResponse.cookies())
@@ -64,4 +74,6 @@ public class AssistScraper {
 
         return classTimeSlots;
     }
+
+
 }
